@@ -1,0 +1,17 @@
+,ARI,Silhouette,Davies-Bouldin,Accuracy
+K-Means,0.328817547,0.492944032,0.693046086,0.575385833
+GMM,0.350221402,0.41468817,0.668041859,0.572220024
+Spectral,0.394381562,0.466162652,0.642572869,0.610209735
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,Region,Observed Behavior,Reason (Interpretation),
+,Left-middle curved band (cardboard ¡ú paper transition),"Under ground truth labels, this region forms a clear continuous band. K-Means forcibly splits the band into relatively discrete block-like clusters, whereas GMM and Spectral clustering preserve the continuous transition structure.","This region does not consist of two well-separated clusters but instead represents a semantically continuous feature manifold. The centroid-based assumption of K-Means disrupts manifold continuity, while GMM and Spectral clustering better respect the intrinsic geometry of the data.",
+,Central dense region (paper-dominated),"This area exhibits the strongest label mixing under ground truth. K-Means induces noticeable label reassignment, while GMM and Spectral clustering remain highly overlapped.","The region corresponds to a high-density, low-discriminability subspace where class-specific signals are weak. Clustering behavior is therefore driven primarily by density rather than semantic boundaries, making stable partitioning difficult for all methods.",
+,Upper-right region (plastic + metal),"A relatively stable, high-density cluster is formed across all clustering methods. Spectral clustering shows the clearest boundary, while K-Means and GMM display minor mixing.","This region is well separated from the rest of the embedding space, indicating strong feature discriminability. Spectral clustering reinforces internal consistency by exploiting local neighborhood connectivity.",
+,Lower-right small tail (isolated sample branch),"A small isolated tail structure remains detached across all four subplots, with minimal variation in clustering assignments.","These samples lie in a low-density, weakly connected region of the embedding space, forming an outlying manifold branch. All clustering methods tend to preserve its structural independence.",
+,Bottom region (trash-dominated),"Under ground truth labels, the distribution is highly dispersed. K-Means compresses the region into a relatively compact cluster, whereas GMM and Spectral clustering exhibit greater internal spread.","This category inherently has high intra-class variability. K-Means enforces compactness by minimizing within-cluster variance, while GMM and Spectral clustering more faithfully reflect the non-uniform distribution of the data.",
